@@ -1,48 +1,15 @@
-// переиспользование методов класса
-// Напиши класс StringBuilder.На вход он получает один параметр - строку, которую записывает в свойство _value.
+// filter и оператор!
+// Получи массив только неактивных пользователей(отфильтруй по значению свойства isActive)
 
-// Добавь классу следующий функционал:
+// Используй деструктурирующее присваивание для параметра функции({ isActive })
+// без пробелов и переносов на новую строку.
 
-// Геттер value - возвращает текущее значение поля _value
-// Метод append(str) - получает параметр str(строку) и добавляет ее в конец _value
-// Метод prepend(str) - получает параметр str(строку) и добавляет ее в начало value
-// Метод pad(str) - получает параметр str(строку) и добавляет ее в начало и в конец _value
-// Метод pad должен использовать методы append и prepend
+// Используй оператор!.
 
-// Write code under this line
-class StringBuilder {
-  constructor(value) {
-    this._value = value;
-  }
+// Используй только перебирающие методы массива которые не изменяют
+//   (не мутируют) исходный массив.Т.е.нельзя использовать for, splice,
+//     push и т.п.мутирующие методы.
 
-  get value() {
-    return this._value;
-  }
+const getInactiveUsers = (array) => array.filter(({ isActive }) => !isActive);
 
-  append(str) {
-    this._value += str;
-  }
-
-  prepend(str) {
-    this._value = str + this._value;
-  }
-
-  pad(str) {
-    this.prepend(str);
-    this.append(str);
-  }
-}
-
-console.log(typeof StringBuilder);
-// 'function'
-
-const builder = new StringBuilder(".");
-
-builder.append("^");
-console.log(builder.value); // '.^'
-
-builder.prepend("^");
-console.log(builder.value); // '^.^'
-
-builder.pad("=");
-console.log(builder.value); // '=^.^='
+console.log(getInactiveUsers(users));
